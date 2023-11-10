@@ -30,7 +30,7 @@ def find_file():
     xml_file = glob.glob(search_pattern, recursive=True)
 
     if xml_file:
-        os.system('cmd /c "cls"')
+        os.system("cls")
         return xml_file[0]
     else:
         print("El archivo 'configuration.xml' no se encontró.")
@@ -82,7 +82,6 @@ def save_xml(a: int, b: int, _: list[str]) -> None:
             "es-es" if b == 1 else "en-us",
         )
         PRODUCTS_KEYS_SELECTED = f'<Product ID="{pid}" PIDKEY="{pidkey}">\n    <Language ID="{idlang}" />\n</Product>'
-        insert_xml_element(PRODUCTS_KEYS_SELECTED)
     else:
         for item in _:
             pid, pidkey, idlang = (
@@ -91,7 +90,8 @@ def save_xml(a: int, b: int, _: list[str]) -> None:
                 "es-es" if b == 1 else "en-us",
             )
             PRODUCTS_KEYS_SELECTED = f'<Product ID="{pid}" PIDKEY="{pidkey}">\n    <Language ID="{idlang}" />\n</Product>'
-            insert_xml_element(PRODUCTS_KEYS_SELECTED)
+            
+    insert_xml_element(PRODUCTS_KEYS_SELECTED)
 
 
 # Guardar en XML ✅
@@ -117,15 +117,12 @@ def exec_install() -> None:
     exe_file = glob.glob(ruta, recursive=True)
 
     if exe_file:
-        #! descomentar
-        # os.system(f'cmd /c "{exe_file[0]} /configure {find_file()}"')
-        print()
+        os.system(f"{exe_file[0]} /configure {find_file()}")
     else:
         print("El archivo 'setup.exe' no se encontró.")
 
 
-#! acabar
 ############################################################################
-# Inicio del programa -> hacer una función principal que llame a las demás #
+# Inicio del programa
 opt_download()
 ############################################################################
