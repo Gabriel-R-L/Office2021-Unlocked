@@ -93,7 +93,7 @@ def save_xml(a: int, b: int, _: list[str]) -> None:
             PRODUCTS_KEYS_SELECTED = f'<Product ID="{pid}" PIDKEY="{pidkey}">\n    <Language ID="{idlang}" />\n</Product>'
             insert_xml_element(PRODUCTS_KEYS_SELECTED)
 
-        exec_install()
+    exec_install()
 
 
 # Guardar en XML ✅
