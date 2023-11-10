@@ -82,6 +82,7 @@ def save_xml(a: int, b: int, _: list[str]) -> None:
             "es-es" if b == 1 else "en-us",
         )
         PRODUCTS_KEYS_SELECTED = f'<Product ID="{pid}" PIDKEY="{pidkey}">\n    <Language ID="{idlang}" />\n</Product>'
+        insert_xml_element(PRODUCTS_KEYS_SELECTED)
     else:
         for item in _:
             pid, pidkey, idlang = (
@@ -90,8 +91,9 @@ def save_xml(a: int, b: int, _: list[str]) -> None:
                 "es-es" if b == 1 else "en-us",
             )
             PRODUCTS_KEYS_SELECTED = f'<Product ID="{pid}" PIDKEY="{pidkey}">\n    <Language ID="{idlang}" />\n</Product>'
-            
-    insert_xml_element(PRODUCTS_KEYS_SELECTED)
+            insert_xml_element(PRODUCTS_KEYS_SELECTED)
+
+        exec_install()
 
 
 # Guardar en XML ✅
@@ -105,8 +107,6 @@ def insert_xml_element(xml_str: str) -> None:
         file.seek(0)
         file.writelines(file_content)
         file.truncate()
-
-    exec_install()
 
 
 # Ejecutar sentencia ✅
